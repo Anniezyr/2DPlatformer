@@ -9,6 +9,12 @@ public class RangeEnemy : MonoBehaviour
     [SerializeField] private int Damage;
     [SerializeField] private float range;
 
+
+    [Header("RangedAttack Parameters")]
+    [SerializeField] private Transform Firepoint;
+    [SerializeField] private GameObject[] Fireballs;
+    [SerializeField] private AudioClip fireballsound;
+
     [Header("Collider Parameters")]
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private float colliderDistance;
@@ -48,10 +54,25 @@ public class RangeEnemy : MonoBehaviour
 
     }
 
-    private void RangeAttack()
+    private void RangedAttack()
     {
+        //sound effect
+        AudioManager.instance.PlaySound(fireballsound);
+
         coolDownTimer = 0;
         //shoot the protectile
+        Fireballs[FindFireball()].transform.position = Firepoint.position;
+        Fireballs[FindFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
+    }
+
+    private int FindFireball()
+    {
+        for (int i = 0; i < Fireballs.Length; i++)
+        {
+            if (!Fireballs[i].activeInHierarchy)
+                return i;
+        }
+        return 0;
     }
 
 

@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header ("Health")]
     [SerializeField] private float StartingHealth;
+    [SerializeField] private AudioClip deadsound;
+    [SerializeField] private AudioClip hurtsound;
     public float currentHealth { get; private set; }
     private Animator anim;
     private bool dead;
@@ -30,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
         {
             //player hurt
             anim.SetTrigger("Hurt");
+            AudioManager.instance.PlaySound(hurtsound);
+
             StartCoroutine(Invulnerability());
         }
         else
@@ -38,6 +42,9 @@ public class PlayerHealth : MonoBehaviour
             if (!dead)
             {
                 anim.SetTrigger("Die");
+
+                AudioManager.instance.PlaySound(deadsound);
+
                 GetComponent<PlayerMovement>().enabled = false;//disable the control
                 dead = true;
             }

@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement Parameters")]
     [SerializeField] private float Speed;
     [SerializeField] private float JumpHeight;
-    [SerializeField] private LayerMask GroundLayer;
-    [SerializeField] private LayerMask WallLayer;
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
     private float WallJumpCoolDown;
     private float HorizontalInput;
+
+    [Header("Layer Parameters")]
+    [SerializeField] private LayerMask GroundLayer;
+    [SerializeField] private LayerMask WallLayer;
+
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip jumpsound;
+
 
     private void Awake()//called when the script instance is being loaded
     {
@@ -52,7 +59,15 @@ public class PlayerMovement : MonoBehaviour
 
             //press space
             if (Input.GetKey(KeyCode.Space))
+            {
                 Jump();
+
+                if (Input.GetKeyDown(KeyCode.Space)&& IsGrounded())
+                {
+                    AudioManager.instance.PlaySound(jumpsound);
+                }
+            }
+                
         }
         else
             WallJumpCoolDown += Time.deltaTime;
@@ -65,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, JumpHeight);
             anim.SetTrigger("Jump");
+            
         }
         else if(OnWall() && !IsGrounded())//if character is on the wall already 
         {

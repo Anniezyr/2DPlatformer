@@ -6,10 +6,15 @@ public class EnemyHealth : MonoBehaviour
 {
     [Header("Health")]
     [SerializeField] private float StartingHealth;
+    [SerializeField] private AudioClip deadsound;
+    [SerializeField] private AudioClip hurtsound;
     public float currentHealth { get; private set; }
     private Animator anim;
     private bool dead;
     private SpriteRenderer spriteRend;
+
+    [Header("Components")]
+    [SerializeField]private Behaviour[] components;
 
     private void Awake()
     {
@@ -25,6 +30,7 @@ public class EnemyHealth : MonoBehaviour
         {
             //get hurt
             anim.SetTrigger("Hurt");
+            AudioManager.instance.PlaySound(hurtsound);
         }
         else
         {
@@ -33,18 +39,22 @@ public class EnemyHealth : MonoBehaviour
             {
                 anim.SetTrigger("Die");
 
-                //For the Knight Enemy
-                if(GetComponentInParent<EnemyPatrol>() != null)
-                    GetComponentInParent<EnemyPatrol>().enabled = false;
-
-                if(GetComponent<MeleeEnemy>() != null)
-                    GetComponent<MeleeEnemy>().enabled = false;
+                //Deactivated all related components
+                foreach (Behaviour component in components)
+                {
+                    component.enabled = false;
+                }
 
                 //gameObject.SetActive(false);
+                AudioManager.instance.PlaySound(deadsound);
                 dead = true;
             }
-
         }
+    }
+
+    public void Deactivated()
+    {
+        gameObject.SetActive(false);
     }
 
 }
