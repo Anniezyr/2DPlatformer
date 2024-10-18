@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
         {
             //get hurt
             anim.SetTrigger("Hurt");
-            AudioManager.instance.PlaySound(hurtsound);
+            SoundFXManager.instance.PlaySound(hurtsound);
         }
         else
         {
@@ -46,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
                 }
 
                 //gameObject.SetActive(false);
-                AudioManager.instance.PlaySound(deadsound);
+                SoundFXManager.instance.PlaySound(deadsound);
                 dead = true;
             }
         }

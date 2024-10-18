@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Space)&& IsGrounded())
                 {
-                    AudioManager.instance.PlaySound(jumpsound);
+                    SoundFXManager.instance.PlaySound(jumpsound);
                 }
             }
                 

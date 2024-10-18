@@ -42,7 +42,7 @@ public class MeleeEnemy : MonoBehaviour
                 anim.SetTrigger("MeleeAttack");
 
                 //sound effect
-                AudioManager.instance.PlaySound(attacksound);
+                SoundFXManager.instance.PlaySound(attacksound);
                
             }
         }

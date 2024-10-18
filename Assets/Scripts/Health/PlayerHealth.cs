@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
         {
             //player hurt
             anim.SetTrigger("Hurt");
-            AudioManager.instance.PlaySound(hurtsound);
+            SoundFXManager.instance.PlaySound(hurtsound);
 
             StartCoroutine(Invulnerability());
         }
@@ -43,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 anim.SetTrigger("Die");
 
-                AudioManager.instance.PlaySound(deadsound);
+                SoundFXManager.instance.PlaySound(deadsound);
 
                 GetComponent<PlayerMovement>().enabled = false;//disable the control
                 dead = true;

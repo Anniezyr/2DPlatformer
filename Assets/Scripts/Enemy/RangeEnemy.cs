@@ -57,7 +57,7 @@ public class RangeEnemy : MonoBehaviour
     private void RangedAttack()
     {
         //sound effect
-        AudioManager.instance.PlaySound(fireballsound);
+        SoundFXManager.instance.PlaySound(fireballsound);
 
         coolDownTimer = 0;
         //shoot the protectile
