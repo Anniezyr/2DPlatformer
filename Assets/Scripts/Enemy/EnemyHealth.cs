@@ -26,35 +26,9 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, StartingHealth);//mathf.clamp(value, min,max)
 
-        if (currentHealth > 0)
-        {
-            //get hurt
-            anim.SetTrigger("Hurt");
-            SoundFXManager.instance.PlaySound(hurtsound);
-        }
-        else
-        {
-            //dead only once
-            if (!dead)
-            {
-                anim.SetTrigger("Die");
-
-                //Deactivated all related components
-                foreach (Behaviour component in components)
-                {
-                    component.enabled = false;
-                }
-
-                //gameObject.SetActive(false);
-                SoundFXManager.instance.PlaySound(deadsound);
-                dead = true;
-            }
-        }
+       
     }
 
-    public void Deactivated()
-    {
-        gameObject.SetActive(false);
-    }
+
 
 }

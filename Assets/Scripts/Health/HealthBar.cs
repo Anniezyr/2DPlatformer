@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private PlayerHealth playerhealth;
+    [SerializeField] private Health health;
     [SerializeField] private Image totalhealthbar;
     [SerializeField] private Image currenthealthbar;
 
     private void Start()
     {
-        totalhealthbar.fillAmount = playerhealth.currentHealth/10;
+        totalhealthbar.fillAmount = health.currentHealth/10;
     }
 
     private void Update()
     {
-        currenthealthbar.fillAmount = playerhealth.currentHealth/10;
+        currenthealthbar.fillAmount = health.currentHealth/10;
     }
 }

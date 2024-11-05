@@ -20,7 +20,7 @@ public class MeleeEnemy : MonoBehaviour
 
     //reference
     private Animator anim;
-    private PlayerHealth playerhealth;
+    private Health health;
     private EnemyPatrol enemypatrol;
 
     private void Awake()
@@ -35,7 +35,7 @@ public class MeleeEnemy : MonoBehaviour
         //Attack when player in sight
         if (PlayerInSignt())
         {
-            if(coolDownTimer >= AttackCoolDown && playerhealth.currentHealth > 0)
+            if(coolDownTimer >= AttackCoolDown && health.currentHealth > 0)
             {
                 //Attack
                 coolDownTimer = 0;
@@ -62,7 +62,7 @@ public class MeleeEnemy : MonoBehaviour
 
         if(hit.collider != null)
         {
-            playerhealth = hit.transform.GetComponent<PlayerHealth>();
+            health = hit.transform.GetComponent<Health>();
         }
         return hit.collider != null;
     }
@@ -80,7 +80,7 @@ public class MeleeEnemy : MonoBehaviour
         if (PlayerInSignt())
         {
             //Damage Player
-            playerhealth.TakeDamage(Damage);
+            health.TakeDamage(Damage);
         }
     }
 }
