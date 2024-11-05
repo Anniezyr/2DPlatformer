@@ -9,19 +9,19 @@ public class EnemyProjectile : EnemyDamage//make damage everytime when they touc
     private float lifetime;
     private Animator anim;
     private bool hit;
-    private BoxCollider2D boxcollider;
+    private BoxCollider2D coll;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        boxcollider = GetComponent<BoxCollider2D>();
+        coll = GetComponent<BoxCollider2D>();
     }
     public void ActivateProjectile()
     {
         hit = false;
         lifetime = 0;
         gameObject.SetActive(true);
-        boxcollider.enabled = true;
+        coll.enabled = true;
     }
 
     private void Update()
@@ -43,10 +43,10 @@ public class EnemyProjectile : EnemyDamage//make damage everytime when they touc
     {
         hit = true;
         base.OnTriggerEnter2D(collision);//execute logic from the parent script first
-        boxcollider.enabled = false;//avoid player hit by air
+        coll.enabled = false;//avoid player hit by air
 
         if (anim != null)
-            anim.SetTrigger("Explode");//for rannged enemy, fireball explode
+            anim.SetTrigger("Explode");//for ranngedenemy, fireball explode
         else
             gameObject.SetActive(false);// for the trap
     }

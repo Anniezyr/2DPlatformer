@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9101746322719291391}
   - component: {fileID: 8444798845158487943}
   - component: {fileID: 2608158911545444480}
-  - component: {fileID: 1449200636947057774}
+  - component: {fileID: 6537714558134949087}
   - component: {fileID: 3232276950876482641}
   - component: {fileID: 4164369421688726884}
   m_Layer: 9
@@ -156,7 +156,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.88232243, y: 1.3964185}
   m_EdgeRadius: 0
---- !u!114 &1449200636947057774
+--- !u!114 &6537714558134949087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,13 +165,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 722666394816264320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fc3f09c554441540927cd201856cdf2, type: 3}
+  m_Script: {fileID: 11500000, guid: a5bd0104c44df6a4ca3cdf20873486a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartingHealth: 3
   deadsound: {fileID: 8300000, guid: 5fb42c644a80c87428fa5d67afee9590, type: 3}
   hurtsound: {fileID: 8300000, guid: 187faf09deaabfd4c9c5e31282d3a16f, type: 3}
-  iFramesDuration: 0
   components: []
 --- !u!114 &3232276950876482641
 MonoBehaviour:

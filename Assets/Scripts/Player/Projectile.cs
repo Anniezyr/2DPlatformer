@@ -15,12 +15,12 @@ public class Projectile : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         boxcollider = GetComponent<BoxCollider2D>();
+
     }
 
     private void Update()
     {
         if (Hit) return;
-
         float movementSpeed = speed * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);//move the fireball
 
@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
 
         if(collision.tag == "Enemy")
         {
-            collision.GetComponent<Health>().TakeDamage(1);
+            collision.GetComponent<EnemyHealth>().EnemyTakeDamage(1);
         }
     }
 
