@@ -190,16 +190,16 @@ MonoBehaviour:
   range: 6
   Firepoint: {fileID: 6131352380665446422}
   Fireballs:
-  - {fileID: 2659463086800629920}
-  - {fileID: 1652232279847497178}
-  - {fileID: 399124044621748219}
-  - {fileID: 30014834389960465}
-  - {fileID: 3639368735105786847}
-  - {fileID: 1030243512476797245}
-  - {fileID: 5997643343320554261}
-  - {fileID: 3041457293440097407}
-  - {fileID: 481950305019122657}
-  - {fileID: 8508940779437736313}
+  - {fileID: 5501334660985286976}
+  - {fileID: 5011539314567225152}
+  - {fileID: 7299353330087179728}
+  - {fileID: 4065922219531945095}
+  - {fileID: 6624227761140807205}
+  - {fileID: 3826459426150092493}
+  - {fileID: 6273040545760682377}
+  - {fileID: 2794521704346643384}
+  - {fileID: 3931600412418872289}
+  - {fileID: 3409300121830076560}
   fireballsound: {fileID: 8300000, guid: 3fff168f800d75d4f8a7f945dc4ec754, type: 3}
   boxCollider: {fileID: 2608158911545444480}
   colliderDistance: 0.12
@@ -249,16 +249,16 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5711464487539214761}
-  - {fileID: 9027067050819130579}
-  - {fileID: 7936050709008772850}
-  - {fileID: 7764732920342068760}
-  - {fileID: 6425193780566022870}
-  - {fileID: 7342930225415581748}
-  - {fileID: 4075922583492551196}
-  - {fileID: 4728234722714445174}
-  - {fileID: 7861954648415218408}
-  - {fileID: 2143337015657347184}
+  - {fileID: 2878881654042593353}
+  - {fileID: 3325887790031595081}
+  - {fileID: 1074106348760878297}
+  - {fileID: 6036639421348625806}
+  - {fileID: 3478609787214581548}
+  - {fileID: 6823285168171939780}
+  - {fileID: 4369947415545600128}
+  - {fileID: 5576405808611594929}
+  - {fileID: 6711670317632908008}
+  - {fileID: 4970629575125748121}
   m_Father: {fileID: 3224571779428510508}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2284435936039298484
@@ -298,7 +298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7341080928489058608}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.758, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
@@ -338,7 +338,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 655732640750761944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &874781552835993448
+--- !u!1001 &2268282113139370945
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -386,17 +386,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall (9)
+      value: FireBall (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -407,17 +399,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!4 &2143337015657347184 stripped
+--- !u!4 &1074106348760878297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 874781552835993448}
+  m_PrefabInstance: {fileID: 2268282113139370945}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8508940779437736313 stripped
+--- !u!1 &7299353330087179728 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 874781552835993448}
+  m_PrefabInstance: {fileID: 2268282113139370945}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2958272758481011972
+--- !u!1001 &2439809374990264372
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -465,17 +457,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall (6)
+      value: FireBall (4)
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -486,17 +470,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!4 &4075922583492551196 stripped
+--- !u!4 &3478609787214581548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 2958272758481011972}
+  m_PrefabInstance: {fileID: 2439809374990264372}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5997643343320554261 stripped
+--- !u!1 &6624227761140807205 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 2958272758481011972}
+  m_PrefabInstance: {fileID: 2439809374990264372}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5239849292487130574
+--- !u!1001 &3258456162237054872
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -544,17 +528,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall (4)
+      value: FireBall (6)
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -565,17 +541,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!1 &3639368735105786847 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 5239849292487130574}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6425193780566022870 stripped
+--- !u!4 &4369947415545600128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 5239849292487130574}
+  m_PrefabInstance: {fileID: 3258456162237054872}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5765558554335822446
+--- !u!1 &6273040545760682377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
+  m_PrefabInstance: {fileID: 3258456162237054872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3922255962977611601
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -623,17 +599,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall (7)
+      value: FireBall
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -644,17 +612,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!1 &3041457293440097407 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 5765558554335822446}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4728234722714445174 stripped
+--- !u!4 &2878881654042593353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 5765558554335822446}
+  m_PrefabInstance: {fileID: 3922255962977611601}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6835974024965762737
+--- !u!1 &5501334660985286976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
+  m_PrefabInstance: {fileID: 3922255962977611601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4592156261827297617
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -702,17 +670,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall
+      value: FireBall (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -723,17 +683,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!1 &2659463086800629920 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 6835974024965762737}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5711464487539214761 stripped
+--- !u!4 &3325887790031595081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 6835974024965762737}
+  m_PrefabInstance: {fileID: 4592156261827297617}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7844115236140102603
+--- !u!1 &5011539314567225152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
+  m_PrefabInstance: {fileID: 4592156261827297617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4781418766950177430
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -781,17 +741,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall (1)
+      value: FireBall (3)
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -802,17 +754,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!1 &1652232279847497178 stripped
+--- !u!1 &4065922219531945095 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 7844115236140102603}
+  m_PrefabInstance: {fileID: 4781418766950177430}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &9027067050819130579 stripped
+--- !u!4 &6036639421348625806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 7844115236140102603}
+  m_PrefabInstance: {fileID: 4781418766950177430}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8393061238396344108
+--- !u!1001 &5528683117812108784
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -860,17 +812,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall (5)
+      value: FireBall (8)
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -881,17 +825,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!1 &1030243512476797245 stripped
+--- !u!1 &3931600412418872289 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 8393061238396344108}
+  m_PrefabInstance: {fileID: 5528683117812108784}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7342930225415581748 stripped
+--- !u!4 &6711670317632908008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 8393061238396344108}
+  m_PrefabInstance: {fileID: 5528683117812108784}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8817115595547613440
+--- !u!1001 &5705037277554364636
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -939,17 +883,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall (3)
+      value: FireBall (5)
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -960,17 +896,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!1 &30014834389960465 stripped
+--- !u!1 &3826459426150092493 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 8817115595547613440}
+  m_PrefabInstance: {fileID: 5705037277554364636}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7764732920342068760 stripped
+--- !u!4 &6823285168171939780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 8817115595547613440}
+  m_PrefabInstance: {fileID: 5705037277554364636}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8972919238615109104
+--- !u!1001 &6153687148940947073
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1018,17 +954,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall (8)
+      value: FireBall (9)
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -1039,17 +967,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!1 &481950305019122657 stripped
+--- !u!1 &3409300121830076560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 8972919238615109104}
+  m_PrefabInstance: {fileID: 6153687148940947073}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7861954648415218408 stripped
+--- !u!4 &4970629575125748121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 8972919238615109104}
+  m_PrefabInstance: {fileID: 6153687148940947073}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &9205345038137903594
+--- !u!1001 &6700845047200429481
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1097,17 +1025,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772137946089086158, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1357806759
-      objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_Name
-      value: EnemyFireBall (2)
+      value: FireBall (7)
       objectReference: {fileID: 0}
     - target: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
       propertyPath: m_IsActive
@@ -1118,13 +1038,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
---- !u!1 &399124044621748219 stripped
+--- !u!1 &2794521704346643384 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8806241233176518161, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 9205345038137903594}
+  m_PrefabInstance: {fileID: 6700845047200429481}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7936050709008772850 stripped
+--- !u!4 &5576405808611594929 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269294472100390680, guid: fe78a9688dbe1ac42b75f5a8ceda6b4d, type: 3}
-  m_PrefabInstance: {fileID: 9205345038137903594}
+  m_PrefabInstance: {fileID: 6700845047200429481}
   m_PrefabAsset: {fileID: 0}
