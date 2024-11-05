@@ -31,7 +31,7 @@ public class FireTrap : MonoBehaviour
             }
             if (Activated)
             {
-                collision.GetComponent<PlayerHealth>().TakeDamage(Damage);
+                collision.GetComponent<Health>().TakeDamage(Damage);
             }
         }
     }
