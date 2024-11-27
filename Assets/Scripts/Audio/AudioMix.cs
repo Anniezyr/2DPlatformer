@@ -11,28 +11,30 @@ public class AudioMix : MonoBehaviour
     //For Normal UI
     public void SetMasterVolume(float level)
     {
-        audioMixer.SetFloat("MasterVolume",Mathf.Log10(level)*20f);
+        audioMixer.SetFloat("Master",Mathf.Log10(level)*20f);
     }
 
     public void SetSoundFXVolume(float level)
     {
-        audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(level) * 20f);
+        audioMixer.SetFloat("Sound", Mathf.Log10(level) * 20f);
     }
 
     public void SetMusicVolume(float level)
     {
-        audioMixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20f);
+        audioMixer.SetFloat("Music", Mathf.Log10(level) * 20f);
     }
 
     //For Input
     public void ChangePercentageVolume(string VolumeName,float level)
     {
-        float percent = level/100;
+        float percent = level/100f;
 
+        // get current volume
         audioMixer.GetFloat(VolumeName, out float currentVolumeDB);
 
         float currentVolumeLinear = Mathf.Pow(10, currentVolumeDB / 20f);
 
+        //adjust new volume by percent
         float newVolumeLinear = currentVolumeLinear * (1 + percent);
         newVolumeLinear = Mathf.Clamp(newVolumeLinear, 0.0001f, 1f);
 

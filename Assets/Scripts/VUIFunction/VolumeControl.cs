@@ -7,69 +7,78 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using System.Linq;
 
 public class VolumeControl : MonoBehaviour
 {
+    //Audio Parameter
+    [SerializeField] public GameObject mixer;
 
-    [Header("InputField Parameters")]
-    [SerializeField] private TMP_InputField controlInput;
-    [SerializeField] private TMP_InputField UpDownInput;
-    [SerializeField] private TMP_InputField volumeInput;
-
-    [SerializeField] private GameObject mixer;
+    //Array Analyze Parameter
+    private List<string> musicTypeStrings = new List<string>();
+    private string VolumeName = string.Empty;
 
     void Start()
     {
-        controlInput.text = "Enter'MasterVolume','SoundFXVolume' or 'MusicVolume'";
-        UpDownInput.text = "Enter 'increase' or 'decrease'";
-        volumeInput.text = "Enter 1 number between 1-100";
+        musicTypeStrings.Clear();
+        musicTypeStrings.Add("Master");
+        musicTypeStrings.Add("Sound");
+        musicTypeStrings.Add("Music");
 
-        volumeInput.onEndEdit.AddListener(SetVolumeFromInput);
-        
+        SetVolume("Master",0.5f);
+
     }
 
-    public void SetVolumeFromInput(string input)
+    public void AnalyzeArray(byte[] _byte)
     {
-        //change string to int
-        int changeVolume = 0;
-        try
-        {
-            changeVolume = int.Parse(input.Trim());
-            Debug.Log("Volume = "+ changeVolume);
-        }
-        catch (System.FormatException)
-        {
-            Debug.LogError("error1:transform failed");
-        }
-        catch (System.OverflowException)
-        {
-            Debug.LogError("error2:overscope");
-        }
+        Debug.Log("AnalyzeArray function");
+        string inputString = System.Text.Encoding.UTF8.GetString(_byte);
 
+        foreach (string type in musicTypeStrings)
+        {
+            if (inputString.Contains(type))
+            {
+                Debug.Log("Found substring: " + type);
+                VolumeName = type;
+                break;
+            }
+        }
+    }
+
+    public void SetVolumeFromInput(string controlInput, string UpDownInput, int volumeInput)
+    {
+        // controlInput need to be 'Master','Sound' or 'Music'
+        // UpDownInput need to be 'increase' or 'decrease'
+        //volumeInput need to be 1-100
 
         //check Increase or Decrease
         float x = 0;
         
-        if (UpDownInput.text.Equals("increase", System.StringComparison.OrdinalIgnoreCase))
+        if (UpDownInput =="increase")
         {
             x = 1.0f;
         }
-        else if (UpDownInput.text.Equals("decrease", System.StringComparison.OrdinalIgnoreCase))
+        else if (UpDownInput =="decrease")
         {
             x = -1.0f;
         }
         else
         {
-            Debug.Log("«Î ‰»Î 'increase' ªÚ 'decrease'");
+            Debug.Log("didn't find");
         }
         
-        x = x * changeVolume;
+        x = x * volumeInput;
         Debug.Log("x = " + x);
 
-        mixer.GetComponent<AudioMix>().ChangePercentageVolume(controlInput.text,x);
 
-        volumeInput.text = "";
-        controlInput.text = "";
-        UpDownInput.text = "";
+    }
+
+    public void SetVolume(string volumeName, float volumePercent)
+    {
+        // limited volume to 80%
+        float clampedVolume = Mathf.Clamp(volumePercent, 0f, 0.8f);
+
+        float dBValue = Mathf.Log10(clampedVolume) * 20;
+        mixer.GetComponent<AudioMix>().ChangePercentageVolume(volumeName, Mathf.Log10(clampedVolume) * 20);
     }
 }

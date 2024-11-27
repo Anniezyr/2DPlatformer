@@ -18,11 +18,15 @@ public class SpeechRecognitionTest : MonoBehaviour
     private byte[] bytes;
     private bool recording;
 
+    //my parameters
+    [SerializeField] private VolumeControl vc;
+
     private void Start()
     {
         startButton.onClick.AddListener(StartRecording);
         stopButton.onClick.AddListener(StopRecording);
         stopButton.interactable = false;
+
     }
 
     private void Update()
@@ -52,6 +56,9 @@ public class SpeechRecognitionTest : MonoBehaviour
         clip.GetData(samples, 0);
         bytes = EncodeAsWAV(samples, clip.frequency, clip.channels);
 
+        //sent the bytes array to analyze
+        vc.AnalyzeArray(bytes);
+
         recording = false;
 
         //Debug
@@ -66,7 +73,7 @@ public class SpeechRecognitionTest : MonoBehaviour
         text.text = "Sending...";
         stopButton.interactable = false;
 
-        HuggingFaceAPI.AutomaticSpeechRecognition(bytes, response => {
+         HuggingFaceAPI.AutomaticSpeechRecognition(bytes, response => {
             text.color = Color.white;
             text.text = response;
             startButton.interactable = true;
