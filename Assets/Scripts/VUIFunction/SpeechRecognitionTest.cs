@@ -60,11 +60,10 @@ public class SpeechRecognitionTest : MonoBehaviour
         vc.AnalyzeArray(bytes);
 
         recording = false;
-
-        //Debug
-        //File.WriteAllBytes(Application.dataPath + "/test.wav", bytes);
-
         SendRecording();
+        
+        //Debug
+        //File.WriteAllBytes(Application.dataPath + "/test.wav", bytes);     
     }
 
     private void SendRecording()

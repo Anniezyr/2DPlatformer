@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,23 +24,34 @@ public class AudioMix : MonoBehaviour
         audioMixer.SetFloat("Music", Mathf.Log10(level) * 20f);
     }
 
-    //For Input
-    public void ChangePercentageVolume(string VolumeName,float level)
+    //Percentage
+    public void SetVolumeByPercentage(string VolumeName,float level)
     {
-        float percent = level/100f;
+        //check the level is reasonable
+        
+        if (level < -100f || level > 100f)
+        {
+            Debug.Log("Out of area：" + level);
+            return;
+        }
+        float percent = level / 100f;
 
-        // get current volume
-        audioMixer.GetFloat(VolumeName, out float currentVolumeDB);
+        // if current volume exists
+        if(audioMixer.GetFloat(VolumeName, out float currentVolumeDB))
+        {
+            float currentVolumeLinear = Mathf.Pow(10, currentVolumeDB / 20f);
 
-        float currentVolumeLinear = Mathf.Pow(10, currentVolumeDB / 20f);
+            //adjust new volume by percent
+            float newVolumeLinear = currentVolumeLinear * (1 + percent);
+            newVolumeLinear = Mathf.Clamp(newVolumeLinear, 0.0001f, 1f);
 
-        //adjust new volume by percent
-        float newVolumeLinear = currentVolumeLinear * (1 + percent);
-        newVolumeLinear = Mathf.Clamp(newVolumeLinear, 0.0001f, 1f);
+            float newVolumeDB = 20f * Mathf.Log10(newVolumeLinear);
 
-        float newVolumeDB = 20f * Mathf.Log10(newVolumeLinear);
-
-        Debug.Log(newVolumeDB);
-        audioMixer.SetFloat(VolumeName, newVolumeDB);
+            audioMixer.SetFloat(VolumeName, newVolumeDB);
+        }
+        else
+        {   
+            Debug.Log("Wrong volume name");
+        }
     }
 }

@@ -8,44 +8,33 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using System.Linq;
+using NLP;
 
 public class VolumeControl : MonoBehaviour
 {
     //Audio Parameter
     [SerializeField] public GameObject mixer;
 
-    //Array Analyze Parameter
-    private List<string> musicTypeStrings = new List<string>();
-    private string VolumeName = string.Empty;
-
-    void Start()
-    {
-        musicTypeStrings.Clear();
-        musicTypeStrings.Add("Master");
-        musicTypeStrings.Add("Sound");
-        musicTypeStrings.Add("Music");
-
-        SetVolume("Master",0.5f);
-
-    }
 
     public void AnalyzeArray(byte[] _byte)
     {
         Debug.Log("AnalyzeArray function");
-        string inputString = System.Text.Encoding.UTF8.GetString(_byte);
+        string inputString = System.Text.Encoding.UTF8.GetString(_byte).ToLower();
 
-        foreach (string type in musicTypeStrings)
-        {
-            if (inputString.Contains(type))
-            {
-                Debug.Log("Found substring: " + type);
-                VolumeName = type;
-                break;
-            }
-        }
+        //Example
+        //inputString = "set the sound volume to 40";
+
+        var result = NLP.NLP.AnalyzeSentence(inputString);
+         
+        Debug.Log($"verb: {result.verb}");
+        Debug.Log($"noun: {result.noun}");
+        Debug.Log($"num: {result.number}");
+        Debug.Log($"bool:{result.ByPercent}");
+
+        SetVolumeFromInput(result.verb, result.noun, result.number, result.Bypercent);
     }
 
-    public void SetVolumeFromInput(string controlInput, string UpDownInput, int volumeInput)
+    public void SetVolumeFromInput(string controlInput, string UpDownInput, int volumeInput,bool bypercent)
     {
         // controlInput need to be 'Master','Sound' or 'Music'
         // UpDownInput need to be 'increase' or 'decrease'
@@ -54,7 +43,7 @@ public class VolumeControl : MonoBehaviour
         //check Increase or Decrease
         float x = 0;
         
-        if (UpDownInput =="increase")
+        if (UpDownInput =="set")
         {
             x = 1.0f;
         }
@@ -62,23 +51,19 @@ public class VolumeControl : MonoBehaviour
         {
             x = -1.0f;
         }
-        else
-        {
-            Debug.Log("didn't find");
-        }
         
         x = x * volumeInput;
         Debug.Log("x = " + x);
 
-
+        if (bypercent) 
+        {
+            mixer.GetComponent<AudioMix>().SetVolumeByPercentage(controlInput, volumeInput);
+        }
+        else
+        {
+            // directly decrease
+        }
+        
     }
 
-    public void SetVolume(string volumeName, float volumePercent)
-    {
-        // limited volume to 80%
-        float clampedVolume = Mathf.Clamp(volumePercent, 0f, 0.8f);
-
-        float dBValue = Mathf.Log10(clampedVolume) * 20;
-        mixer.GetComponent<AudioMix>().ChangePercentageVolume(volumeName, Mathf.Log10(clampedVolume) * 20);
-    }
 }
