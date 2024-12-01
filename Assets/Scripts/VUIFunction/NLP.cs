@@ -14,13 +14,16 @@ namespace NLP
             {"change", "set"},
             {"increase", "increase"},
             {"raise", "increase"},
+            {"enhance","increase" },
             {"decrease", "decrease"},
-            {"lower", "decrease"}
+            {"lower", "decrease"},
+            {"drop","decrease" },
+            {"cut","decrease" }
         };
 
         public static List<string> volumeTypes = new List<string> { "Master", "Sound", "Music" };
 
-        public static string percent = "percentage";
+        public static string percent = "%";
 
         //Analyze Sentence
         public static (string verb, string noun, int number, bool ByPercent) AnalyzeSentence(string sentence)

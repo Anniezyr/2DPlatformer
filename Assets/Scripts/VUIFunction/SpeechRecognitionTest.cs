@@ -1,39 +1,39 @@
-using System.IO;
+﻿using System.IO;
 using HuggingFace.API;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
-using UnityEngine.Assertions;
+using System.Collections;
 using UnityEngine.UI;
 
 public class SpeechRecognitionTest : MonoBehaviour
 {
-    // script reference : https://huggingface.co/blog/zh/unity-asr
-
-    [SerializeField] private Button startButton;
-    [SerializeField] private Button stopButton;
-    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI text;   
+    [SerializeField] private VolumeControl vc;     
+    [SerializeField] private Image RecordImg;   
 
     private AudioClip clip;
     private byte[] bytes;
-    private bool recording;
-
-    //my parameters
-    [SerializeField] private VolumeControl vc;
-
-    private void Start()
-    {
-        startButton.onClick.AddListener(StartRecording);
-        stopButton.onClick.AddListener(StopRecording);
-        stopButton.interactable = false;
-
-    }
+    private bool isRecording = false;
+    private Coroutine flickerCoroutine;    
 
     private void Update()
     {
-        if (recording && Microphone.GetPosition(null) >= clip.samples)
+       
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            //over 10 seconds
+            if (!isRecording)
+            {
+                StartRecording();
+            }
+            else
+            {
+                StopRecording();
+            }
+        }
+
+        // over 10 seconds, stop
+        if (isRecording && Microphone.GetPosition(null) >= clip.samples)
+        {
             StopRecording();
         }
     }
@@ -42,45 +42,76 @@ public class SpeechRecognitionTest : MonoBehaviour
     {
         text.color = Color.white;
         text.text = "Recording...";
-        startButton.interactable = false;
-        stopButton.interactable = true;
-        clip = Microphone.Start(null, false, 10, 44100);
-        recording = true;
+        clip = Microphone.Start(null, false, 10, 48000); 
+        isRecording = true;
+
+        
+        if (flickerCoroutine == null)
+        {
+            flickerCoroutine = StartCoroutine(FlickerIcon());
+        }
     }
 
     private void StopRecording()
     {
-        var position = Microphone.GetPosition(null);
+        if (!isRecording) return;
+
+        int position = Microphone.GetPosition(null);
         Microphone.End(null);
-        var samples = new float[position * clip.channels];
-        clip.GetData(samples, 0);
-        bytes = EncodeAsWAV(samples, clip.frequency, clip.channels);
 
-        //sent the bytes array to analyze
-        vc.AnalyzeArray(bytes);
+        if (position > 0)
+        {
+            var samples = new float[position * clip.channels];
+            clip.GetData(samples, 0);
+            bytes = EncodeAsWAV(samples, clip.frequency, clip.channels);
 
-        recording = false;
-        SendRecording();
-        
-        //Debug
-        //File.WriteAllBytes(Application.dataPath + "/test.wav", bytes);     
+            
+            SendRecording();
+        }
+
+        isRecording = false;
+
+        // stop
+        if (flickerCoroutine != null)
+        {
+            StopCoroutine(flickerCoroutine);
+            flickerCoroutine = null;
+            RecordImg.color = new Color(212 / 255f, 83 / 255f, 83 / 255f); // 恢复默认颜色
+        }
     }
 
     private void SendRecording()
     {
         text.color = Color.yellow;
         text.text = "Sending...";
-        stopButton.interactable = false;
 
-         HuggingFaceAPI.AutomaticSpeechRecognition(bytes, response => {
+        HuggingFaceAPI.AutomaticSpeechRecognition(bytes, response =>
+        {
             text.color = Color.white;
             text.text = response;
-            startButton.interactable = true;
-        }, error => {
+            vc.AnalyzeArray(response);
+            StartCoroutine(ClearTextAfterDelay(5f));
+        }, error =>
+        {
             text.color = Color.red;
-            text.text = error;
-            startButton.interactable = true;
+            text.text = "API unstable.";
+            StartCoroutine(ClearTextAfterDelay(5f));
         });
+    }
+
+    private IEnumerator FlickerIcon()
+    {
+        Color color1 = new Color(212 / 255f, 83 / 255f, 83 / 255f);
+        Color color2 = new Color(215 / 255f, 30 / 255f, 30 / 255f);
+
+        while (true)
+        {
+            RecordImg.color = color1;
+            yield return new WaitForSeconds(0.5f);
+
+            RecordImg.color = color2;
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     private byte[] EncodeAsWAV(float[] samples, int frequency, int channels)
@@ -110,5 +141,11 @@ public class SpeechRecognitionTest : MonoBehaviour
             }
             return memoryStream.ToArray();
         }
+    }
+
+    private IEnumerator ClearTextAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        text.text = string.Empty; // Clear the text
     }
 }

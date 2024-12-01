@@ -7,6 +7,7 @@ public class InGameUI : MonoBehaviour
 {
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject OptionMenu;
+    [SerializeField] private GameObject GameOverMenu;
     [SerializeField] private GameObject Player;
     private bool isPaused = false;
 
@@ -14,6 +15,7 @@ public class InGameUI : MonoBehaviour
     {
         PauseMenu.SetActive(false);
         OptionMenu.SetActive(false);
+        GameOverMenu.SetActive(false);
     }
     void Update()
     {
@@ -46,5 +48,10 @@ public class InGameUI : MonoBehaviour
     {
         Player.GetComponent<PlayerMovement>().enabled = false;// disable the control
         SceneManager.LoadScene("MainMenu");//scene change
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

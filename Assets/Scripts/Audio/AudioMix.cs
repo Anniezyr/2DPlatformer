@@ -24,6 +24,24 @@ public class AudioMix : MonoBehaviour
         audioMixer.SetFloat("Music", Mathf.Log10(level) * 20f);
     }
 
+    // Direct set
+    public void SetDirectly(string VolumeName, float level)
+    {
+        //check the level is reasonable
+
+        if (level < -100f || level > 100f)
+        {
+            Debug.Log("Out of area：" + level);
+            return;
+        }
+
+        //level :0-100, change to 0.00001-1
+        float linearLevel = Mathf.Lerp(0.0001f, 1f, level / 100f);
+
+        float volumeDB = Mathf.Log10(linearLevel) * 20f;
+        audioMixer.SetFloat(VolumeName, volumeDB);
+    }
+
     //Percentage
     public void SetVolumeByPercentage(string VolumeName,float level)
     {

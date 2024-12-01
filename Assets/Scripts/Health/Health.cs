@@ -21,6 +21,9 @@ public class Health : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Behaviour[] components;
 
+    [Header("Death Menu")]
+    [SerializeField] private GameObject deathMenu;
+
     private void Awake()
     {
         currentHealth = StartingHealth;
@@ -58,6 +61,12 @@ public class Health : MonoBehaviour
 
                     GetComponent<PlayerMovement>().enabled = false;//disable the control
                     dead = true;
+
+                    // Show death menu
+                    if (deathMenu != null)
+                    {
+                        deathMenu.SetActive(true);
+                    }
                 }
 
             }

@@ -16,11 +16,9 @@ public class VolumeControl : MonoBehaviour
     [SerializeField] public GameObject mixer;
 
 
-    public void AnalyzeArray(byte[] _byte)
+    public void AnalyzeArray(string inputString)
     {
-        Debug.Log("AnalyzeArray function");
-        string inputString = System.Text.Encoding.UTF8.GetString(_byte).ToLower();
-
+        Debug.Log("Analyze sentence:" + inputString);
         //Example
         //inputString = "set the sound volume to 40";
 
@@ -31,38 +29,51 @@ public class VolumeControl : MonoBehaviour
         Debug.Log($"num: {result.number}");
         Debug.Log($"bool:{result.ByPercent}");
 
-        SetVolumeFromInput(result.verb, result.noun, result.number, result.Bypercent);
+        SetVolumeFromInput(result.verb, result.noun, result.number, result.ByPercent);
     }
 
-    public void SetVolumeFromInput(string controlInput, string UpDownInput, int volumeInput,bool bypercent)
+    public void SetVolumeFromInput(string UpDownInput, string controlInput, int volumeInput,bool bypercent)
     {
-        // controlInput need to be 'Master','Sound' or 'Music'
-        // UpDownInput need to be 'increase' or 'decrease'
-        //volumeInput need to be 1-100
-
-        //check Increase or Decrease
+        //check Increase or Decrease or Set
         float x = 0;
-        
-        if (UpDownInput =="set")
-        {
-            x = 1.0f;
-        }
-        else if (UpDownInput =="decrease")
-        {
-            x = -1.0f;
-        }
-        
-        x = x * volumeInput;
-        Debug.Log("x = " + x);
+        bool Set = false;
 
-        if (bypercent) 
+        switch (UpDownInput)
         {
-            mixer.GetComponent<AudioMix>().SetVolumeByPercentage(controlInput, volumeInput);
+            case "increase":
+                x = 1.0f;
+                break;
+            case "decrease":
+                x = -1.0f;
+                break;
+            case "set":
+                // set the volume directly
+                Set = true;
+                break;
+            default:
+                Debug.Log("updownInput error");
+                break;
         }
-        else
+
+        x = x * volumeInput;
+        Debug.Log("x= "+x);
+
+        if (Set)
         {
-            // directly decrease
+            mixer.GetComponent<AudioMix>().SetDirectly(controlInput, volumeInput);
         }
+        else // increase or decrease
+        {
+            if (bypercent)
+            {
+                mixer.GetComponent<AudioMix>().SetVolumeByPercentage(controlInput, volumeInput);
+            }
+            else
+            {
+                // directly increase/decrease the 1-100 volume
+            }
+        }
+        
         
     }
 
