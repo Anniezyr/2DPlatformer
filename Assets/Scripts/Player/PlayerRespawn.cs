@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private AudioClip checkpointSound;
+    [SerializeField] private AudioClip successSound;
+    [SerializeField] private GameObject OnboardingUI;
     private Transform currentCheckpoint;//the lastest checkpoint
     private Health savedPlayerHealth;
 
@@ -33,6 +36,18 @@ public class PlayerRespawn : MonoBehaviour
             SoundFXManager.instance.PlaySound(checkpointSound);
             collision.GetComponent<Collider2D>().enabled = false; //Deactivate checkpoint collider
             collision.GetComponent<Animator>().SetTrigger("appear");//play the animation
+        }
+
+        if(collision.transform.tag == "End")
+        {
+            SoundFXManager.instance.PlaySound(checkpointSound);
+            collision.GetComponent<Collider2D>().enabled = false; //Deactivate checkpoint collider
+            collision.GetComponent<Animator>().SetTrigger("pressed");//play the animation
+        }
+
+        if(collision.transform.tag == "Finish")
+        {
+            OnboardingUI.SetActive(false);
         }
     }
 }
