@@ -16,12 +16,13 @@ public class EnemyProjectile : EnemyDamage//make damage everytime when they touc
         anim = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();
     }
+
     public void ActivateProjectile()
     {
         hit = false;
         lifetime = 0;
         gameObject.SetActive(true);
-        coll.enabled = true;
+        if(coll != null) coll.enabled = true;
     }
 
     private void Update()

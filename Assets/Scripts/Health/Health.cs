@@ -55,18 +55,18 @@ public class Health : MonoBehaviour
 
                     if (collision.tag == "Player")
                     {
+                        //Deactivated all related components
+                        foreach (Behaviour component in components)
+                        {
+                            component.enabled = false;
+                        }
 
+                        anim.SetBool("Grounded?", true);
+                        anim.SetTrigger("Die");
+                        dead = true;
+                        SoundFXManager.instance.PlaySound(deadsound);
                     }
-                    SoundFXManager.instance.PlaySound(deadsound);
-
-                    GetComponent<PlayerMovement>().enabled = false;//disable the control
-                    dead = true;
-
-                    // Show death menu
-                    if (deathMenu != null)
-                    {
-                        deathMenu.SetActive(true);
-                    }
+                    
                 }
 
             }
@@ -116,8 +116,34 @@ public class Health : MonoBehaviour
 
     }
 
-    public void Deactivated()
+    public void Deactivated()// fireball animation
     {
         gameObject.SetActive(false);
+    }
+
+    public void DeathMenu()
+    {
+        // Show death menu
+        if (deathMenu != null)
+        {
+            deathMenu.SetActive(true);
+        }
+    }
+
+
+    public void PlayerRespawn()
+    {
+        dead = false;
+        TakeHealth(StartingHealth);
+        anim.ResetTrigger("Die");
+        anim.Play("Idle");
+
+        StartCoroutine(Invulnerability());
+
+        //Activated all related components
+        foreach (Behaviour component in components)
+        {
+            component.enabled = true;
+        }
     }
 }
