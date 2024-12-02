@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && CoolDownTimer>AttackCoolDown && playerMovement.CanAttack())//if mouse left click and cool down is finished and playermovement script check player is able to attack
+        if ((Input.GetMouseButton(0)|| Input.GetKeyDown(KeyCode.LeftControl) ) && CoolDownTimer>AttackCoolDown && playerMovement.CanAttack())//if mouse left click and cool down is finished and playermovement script check player is able to attack
             Attack();
 
         CoolDownTimer += Time.deltaTime;

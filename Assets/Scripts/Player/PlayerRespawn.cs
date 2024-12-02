@@ -40,7 +40,7 @@ public class PlayerRespawn : MonoBehaviour
 
         if(collision.transform.tag == "End")
         {
-            SoundFXManager.instance.PlaySound(checkpointSound);
+            SoundFXManager.instance.PlaySound(successSound);
             collision.GetComponent<Collider2D>().enabled = false; //Deactivate checkpoint collider
             collision.GetComponent<Animator>().SetTrigger("pressed");//play the animation
         }
