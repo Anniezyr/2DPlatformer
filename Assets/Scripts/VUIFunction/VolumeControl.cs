@@ -56,7 +56,7 @@ public class VolumeControl : MonoBehaviour
         }
 
         x = x * volumeInput;
-        Debug.Log("x= "+x);
+
 
         if (Set)
         {
