@@ -3,27 +3,64 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioMix : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Slider masterSlider;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider soundSlider;
 
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("MasterVolume") || PlayerPrefs.HasKey("MusicVolume") ||
+            PlayerPrefs.HasKey("SoundVolume"))
+        {
+            LoadVolume();
+        }
+        else
+        {
+            SetMasterVolume();
+            SetMusicVolume();
+            SetSoundFXVolume();
+        }
+    }
     //For Normal UI
-    public void SetMasterVolume(float level)
+    public void SetMasterVolume()
     {
+        float level = masterSlider.value;
         audioMixer.SetFloat("Master",Mathf.Log10(level)*20f);
+        PlayerPrefs.SetFloat("MasterVolume", level);
     }
 
-    public void SetSoundFXVolume(float level)
+    public void SetSoundFXVolume()
     {
+        float level = soundSlider.value;
         audioMixer.SetFloat("Sound", Mathf.Log10(level) * 20f);
+        PlayerPrefs.SetFloat("SoundVolume", level);
     }
 
-    public void SetMusicVolume(float level)
+    public void SetMusicVolume()
     {
+        float level = musicSlider.value;
         audioMixer.SetFloat("Music", Mathf.Log10(level) * 20f);
+        PlayerPrefs.SetFloat("MusicVolume", level);
     }
 
+    //Load
+    private void LoadVolume()
+    {
+        masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        soundSlider.value = PlayerPrefs.GetFloat("SoundVolume");
+
+        SetMasterVolume();
+        SetMusicVolume();
+        SetSoundFXVolume();
+    }
+
+    //For SpeechRecognition
     // Direct set
     public void SetDirectly(string VolumeName, float level)
     {
