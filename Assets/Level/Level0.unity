@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e35a62a90efe9e4198f675cbd4ebc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousroom: {fileID: 125961826}
+  previousroom: {fileID: 1693438644}
   nextroom: {fileID: 1538745951003774492}
   cam: {fileID: 519420033}
 --- !u!61 &127323983
