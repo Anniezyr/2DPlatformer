@@ -9,7 +9,7 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private GameObject OptionMenu;
     [SerializeField] private GameObject GameOverMenu;
     [SerializeField] private GameObject Player;
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     private void Start()
     {

@@ -2605,6 +2605,7 @@ MonoBehaviour:
   OptionMenu: {fileID: 2002919033}
   GameOverMenu: {fileID: 1193000718}
   Player: {fileID: 1332633539}
+  isPaused: 0
 --- !u!1 &543131964 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 451819671570044426, guid: a580627f0949d134fb52585ba8dac402, type: 3}
@@ -8900,6 +8901,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 404018577}
     m_Modifications:
+    - target: {fileID: 235114761481665155, guid: 74f018c08e781db4da798b4c842cf9f0, type: 3}
+      propertyPath: GameCondition
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 2487012771693006975, guid: 74f018c08e781db4da798b4c842cf9f0, type: 3}
       propertyPath: FireBalls.Array.data[0]
       value: 

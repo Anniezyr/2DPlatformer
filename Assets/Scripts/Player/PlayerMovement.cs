@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sound Effects")]
     [SerializeField] private AudioClip jumpsound;
 
+    [Header("Stop Attack when Paused")]
+    private bool isPaused;
+    [SerializeField] private InGameUI GameCondition;
+
 
     private void Awake()//called when the script instance is being loaded
     {
@@ -25,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+
     }
 
     private void Update()//player movement
@@ -113,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool CanAttack()//when player is on the ground, player can attack 
     {
-        return IsGrounded() && !OnWall();
+        isPaused = GameCondition.isPaused;
+        return IsGrounded() && !OnWall() && !isPaused;
     }
 }
