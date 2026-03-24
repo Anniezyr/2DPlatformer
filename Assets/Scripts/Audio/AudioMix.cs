@@ -14,6 +14,7 @@ public class AudioMix : MonoBehaviour
 
     private void Start()
     {
+        // playerPrefs没有inspector
         if (PlayerPrefs.HasKey("MasterVolume") || PlayerPrefs.HasKey("MusicVolume") ||
             PlayerPrefs.HasKey("SoundVolume"))
         {
