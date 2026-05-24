@@ -12,11 +12,15 @@ public class Room : MonoBehaviour
         //save all enemies' position at the beginning
         initialposition = new Vector3[enemies.Length];
 
-        for (int i = 0; i < enemies.Length; i++)
+        if (enemies != null)
         {
-            if (enemies[i] != null)
-                initialposition[i] = enemies[i].transform.position;
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                if (enemies[i] != null)
+                    initialposition[i] = enemies[i].transform.position;
+            }
         }
+
     }
 
     public void ActiveRoom(bool _status)
